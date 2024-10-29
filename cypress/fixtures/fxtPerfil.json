@@ -1,4 +1,9 @@
 {
   "usuario": "aluno_ebac@teste.com",
-  "senha": "teste@teste.com"
+  "senha": "teste@teste.com",
+  
+  "usuario2": "aluno_ebac@teste.com",
+  "senha2": "senhaerrada",
+
+  "usuario3": "usuarioerrado"
 }

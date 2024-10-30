@@ -1,6 +1,7 @@
 const request = require('supertest');
 const apiUrl = 'http://lojaebac.ebaconline.art.br/wp-json';
 const { faker } = require('@faker-js/faker');
+import cuponsSchema from '../contracts/cupons.contrato'
 
 /*
 Como admin da EBAC-SHOP
@@ -67,5 +68,11 @@ describe('TCC teste de API - Loja EBAC', () => {
 
         expect(response.status).toBe(400);
         expect(response.body).toHaveProperty('code', "woocommerce_rest_coupon_code_already_exists");
+    });
+
+    it('Deve validar o contrato', async () => {
+        cy.request('/wc/v3/coupons').then(response => {
+            return cuponsSchema.validateAsync(response.body)
+        })
     });
 });

@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+const request = require('supertest')
 
 /*
 Como admin da EBAC-SHOP
@@ -7,7 +8,7 @@ Para poder listar e cadastrar os cupons
 */
 
 describe('TCC teste de API - Loja EBAC', () => {
-    it.only('Deve receber a lsita de todos os cupons', () => {
+    it('Deve receber a lsita de todos os cupons', () => {
         cy.request({
             method: 'GET',
             url:'/wc/v3/coupons',
@@ -50,6 +51,19 @@ describe('TCC teste de API - Loja EBAC', () => {
                 }
         }).should((response) => {
             expect(response.status).equal(201)
+        })
+    });
+
+    it.only('Deve barrar a listagem sem autorização', () => {
+        cy.request({
+            method: 'GET',
+            url:'/wc/v3/coupons',
+            auth: {
+                user: 'admin_ebac',
+                pass: '@admin!&b@c!2022'
+            }
+        }).should((response) => {
+            expect(response.status).equal(400)
         })
     });
 });

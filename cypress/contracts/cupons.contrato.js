@@ -1,8 +1,9 @@
 const Joi = require ('joi')
-const request = require('supertest')
 
 const cuponsSchema = Joi.object({
-
+    cupons: Joi.array().items({
+        
+    })
 })
 
 export default cuponsSchema

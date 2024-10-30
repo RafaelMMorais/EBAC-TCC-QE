@@ -26,6 +26,10 @@ context('Teste EBAC Shop -> Carrinho de compras', () => {
     })
   });
 
+  afterEach(() => {
+    cy.screenshot()
+  });
+
   it('Teste carrinho de compras -> Deve adicionar um produto ao carrinho com sucesso', () => {
     cy.fixture('fxtProduct').then(dados => {
       let prod = 1
@@ -104,7 +108,7 @@ context('Teste EBAC Shop -> Carrinho de compras', () => {
     cy.visit('carrinho/')
   });
 
-  it.only('Teste carrinho de compras -> Deve dar erro ao tentar incluir produto com quantidade inválida', () => {
+  it('Teste carrinho de compras -> Deve dar erro ao tentar incluir produto com quantidade inválida', () => {
     cy.fixture('fxtProduct').then(dados => {
       let prod = 4
       cartTest.buscarProduto(dados[prod].nomeProduto)

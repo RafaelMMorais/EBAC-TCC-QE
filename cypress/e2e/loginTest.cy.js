@@ -21,6 +21,10 @@ context('Teste EBAC Shop -> Login', () => {
     })
   });
 
+  afterEach(() => {
+    cy.screenshot()
+  });
+
   it('Login -> Deve fazer login com sucesso', () => {
     cy.fixture('fxtPerfil').then((dados) => {
       cy.login(dados.usuario, dados.senha)

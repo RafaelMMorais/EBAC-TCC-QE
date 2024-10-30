@@ -1,12 +1,20 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
+const path = require('path')
 
 module.exports = defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
+    // Outras configurações do Cypress
+    reporter: 'mocha-awesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
     },
     //baseUrl: "http://localhost:80/"
     baseUrl: "http://lojaebac.ebaconline.art.br/"
     //baseUrl: "http://lojaebac.ebaconline.art.br/wp-json"
   },
 });
+
+

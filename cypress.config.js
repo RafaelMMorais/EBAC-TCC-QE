@@ -7,7 +7,6 @@ module.exports = defineConfig({
     },
     //baseUrl: "http://localhost:80/"
     //baseUrl: "http://lojaebac.ebaconline.art.br/"
-    //baseUrl: "http://lojaebac.ebaconline.art.br/rest-api/docs/#/"
     baseUrl: "http://lojaebac.ebaconline.art.br/wp-json"
   },
 });

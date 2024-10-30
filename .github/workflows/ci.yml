@@ -19,21 +19,18 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20.16.0'  # Usando a versão 20.16.0 do Node.js
+        node-version: '20.16.0'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Install K6
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y k6
-
     - name: Run K6 tests
-      run: k6 run PerformanceTest/k6.test.js  # Executa o script de teste K6
+      uses: loadimpact/k6-action@v1
+      with:
+        script: PerformanceTest/k6.test.js
 
     - name: Run Cypress tests
-      run: npx cypress run  # Executa os testes do Cypress, se aplicável
+      run: npx cypress run
 
     - name: Run Jest tests
-      run: npm test  # Executa os testes do Jest, se aplicável
+      run: npm test

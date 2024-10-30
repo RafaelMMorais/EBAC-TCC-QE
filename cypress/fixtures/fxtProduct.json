@@ -22,5 +22,11 @@
         "tamanho": "36",
         "cor": "Red",
         "quantidade": 3
+    },
+    {
+        "nomeProduto": "Stellar Solar Jacket",
+        "tamanho": "M",
+        "cor": "Blue",
+        "quantidade": 11
     }
 ]

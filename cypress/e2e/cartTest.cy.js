@@ -57,7 +57,7 @@ context('Teste EBAC Shop -> Carrinho de compras', () => {
     });
   });
 
-  it.only('Teste carrinho de compras -> Deve apresentar erro ao tentar ultrapassar o valor de R$990', () => {
+  it('Teste carrinho de compras -> Deve apresentar erro ao tentar ultrapassar o valor de R$990', () => {
     cy.fixture('fxtProduct').then(dados => {
       let prod = 0
       cartTest.buscarProduto(dados[prod].nomeProduto)
@@ -90,7 +90,7 @@ context('Teste EBAC Shop -> Carrinho de compras', () => {
 
       cy.get('.woocommerce-message').should('contain', dados[prod].nomeProduto)
     });
-    
+
     cy.fixture('fxtProduct').then(dados => {
       let prod = 3
       cartTest.buscarProduto(dados[prod].nomeProduto)
@@ -104,7 +104,16 @@ context('Teste EBAC Shop -> Carrinho de compras', () => {
     cy.visit('carrinho/')
   });
 
-  it('Teste carrinho de compras -> Deve dar erro ao tentar incluir produto com quantidade inválida', () => {
+  it.only('Teste carrinho de compras -> Deve dar erro ao tentar incluir produto com quantidade inválida', () => {
+    cy.fixture('fxtProduct').then(dados => {
+      let prod = 4
+      cartTest.buscarProduto(dados[prod].nomeProduto)
+      cartTest.addProdutoCarrinho(
+        dados[prod].tamanho,
+        dados[prod].cor,
+        dados[prod].quantidade)
 
+      cy.get('.woocommerce-message').should('contain', 'Não é permitido inserir mais de 10 itens')
+    });
   });
 })
